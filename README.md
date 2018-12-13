@@ -1,5 +1,8 @@
 # Liveperson Coding Challenge:
 
+by (mewc)[https://github.com/mewc]
+contact: (jasmith@liveperson.com)[mailto:jasmith@liveperson.com] and account (jasmith-lp)[https://github.com/jasmith-lp]
+
 
 ## Part 1
  
