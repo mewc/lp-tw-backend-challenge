@@ -1,5 +1,6 @@
 var axios = require('axios');
 const twitter = require('../helpers/twitter');
+const db = require('../helpers/db');
 
 async function getTweets(req, res, next) {
     let searchResults = null;
@@ -11,6 +12,7 @@ async function getTweets(req, res, next) {
             console.log(tweet_id, user_id);
             tweets.push({tweet_id, created_at, text, user: {user_id, name}});
         }
+        db.saveTweets(tweets);
         res.status(200).json(tweets)
     } catch (err) {
         console.log(err.message)
