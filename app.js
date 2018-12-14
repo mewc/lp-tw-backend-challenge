@@ -5,10 +5,25 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database(':memory:');
+var db = new sqlite3.Database(':memory:', (err) => {
+  if (err) {
+    return console.error(err.message);
+  }
+  console.log('Connected to the in-memory SQlite database.');
+});
+db.serialize(function() {
+  db.run("CREATE TABLE tweets (\n" +
+      "\ttweet_id integer PRIMARY KEY,\n" +
+      "\ttweet text NOT NULL,\n" +
+      "\tcreated_at text NOT NULL,\n" +
+      "\tuser_name text NOT NULL\n" +
+      ");");
+
+  db.close();
+});
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var twitterRouter = require('./routes/twitter');
 
 var app = express();
 
@@ -29,7 +44,7 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/twitter', twitterRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
