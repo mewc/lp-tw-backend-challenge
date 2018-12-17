@@ -26,50 +26,38 @@ const db = new sqlite3.Database('data/tweets.db', (err) => {
 async function saveTweets(tweets) {
     try {
         console.log(tweets.length);
-        let query = db.prepare("INSERT INTO tweets VALUES (?,?,?,?,?)");
-        await tweets.forEach(async (tw) => {
-            const exists = await db.get('SELECT EXISTS(SELECT 1 from tweets WHERE tweet_id=' + tw.tweet_id);
-            console.log('TWEET ' + tw.tweet_id + ' in db is ' + exists);
-            if (!exists) {
-                await query.run(tw.tweet_id, tw.text, tw.created_at, tw.user_name, tw.user_id)
-            }
-        });
+        tweets.forEach((t) => {
+            db.run('INSERT INTO tweets VALUES (?,?,?,?,?);',
+                [t.tweet_id, t.tweet, t.created_at, t.user.user_name, t.user.user_id],
+                (err)=>{
+                if(err){console.log(err)}
+            })
+        })
 
-        query.finalize();
-        const all = await db.get('SELECT * FROM tweets');
-        console.log('select all', all);
     } catch (e) {
         console.log(e)
     }
 }
 
 //just get all tweets
-async function getAllTweets() {
+async function getAll() {
+    let t = [];
     try {
-        return await db.get('SELECT * FROM tweets');
-    } catch (e) {
-        console.log('tweet log' + e.message)
-        return e;
-    }
-
-}
-
-//log them all for debug
-async function logAllTweets() {
-    try {
-        db.each("SELECT * FROM tweets", function (err, row) {
-            console.log(row);
-            console.log(err);
+        await db.each('SELECT * FROM tweets',
+            (err, row) => {
+                if(err){throw err}
+                t.push(row)
         });
     } catch (e) {
-        console.log('tweet log ' + e.message)
+        console.log('tweet log' + e.message);
+        return e;
     }
+    return t;
 }
 
 
 module.exports = {
     saveTweets,
-    getAllTweets,
-    logAllTweets,
+    getAll,
     db
 };
