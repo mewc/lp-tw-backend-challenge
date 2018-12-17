@@ -25,39 +25,34 @@ const db = new sqlite3.Database('data/tweets.db', (err) => {
 //Save array of tweets we get, check for uniques
 async function saveTweets(tweets) {
     try {
-        console.log(tweets.length);
         tweets.forEach((t) => {
             db.run('INSERT INTO tweets VALUES (?,?,?,?,?);',
                 [t.tweet_id, t.tweet, t.created_at, t.user.user_name, t.user.user_id],
-                (err)=>{
-                if(err){console.log(err)}
-            })
+                (err) => {
+                    if (err) {
+                        console.log(err.message)
+                    }
+                })
         })
-
     } catch (e) {
         console.log(e)
     }
 }
 
 //just get all tweets
-async function getAll() {
-    let t = [];
-    try {
-        await db.each('SELECT * FROM tweets',
-            (err, row) => {
-                if(err){throw err}
-                t.push(row)
+async function get(param,res) {
+    db.all('SELECT '+param+' FROM tweets;', [],
+        (err, rows) => {
+        if(err){console.log(err.message)}
+            console.log(rows);
+            res.send(rows)
         });
-    } catch (e) {
-        console.log('tweet log' + e.message);
-        return e;
-    }
-    return t;
 }
+
+
 
 
 module.exports = {
     saveTweets,
-    getAll,
-    db
+    get,
 };

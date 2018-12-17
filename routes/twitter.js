@@ -6,7 +6,8 @@ const twitterController = require('../controllers/twitter');
 const query = '#liveperson';
 
 /* GET users listing. */
-router.get('/', twitterController.getTweets);
-router.get('/saved', twitterController.);
+router.get('/', twitterController.getTweetsFromApi); //most recent
+router.get('/api', twitterController.getTweetsFromApi);
+router.get('/db', twitterController.getTweetsFromDb);
 
 module.exports = router;

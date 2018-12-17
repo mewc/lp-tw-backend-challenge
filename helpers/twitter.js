@@ -34,8 +34,6 @@ async function getTweet(id) {
             console.log('err');
             return err;
         })
-
-
 }
 
 
