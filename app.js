@@ -9,24 +9,6 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 var twitterRouter = require('./routes/twitter');
 
-let sqlite3 = require('sqlite3');
-let db = new sqlite3.Database('../data/tweets.db', (err) => {
-  if (err) {
-    return console.error(err.message);
-  }
-  console.log('Connected to the SQlite database.');
-});
-db.serialize(function() {
-  db.run("CREATE TABLE IF NOT EXISTS tweets (\n" +
-      "\ttweet_id integer PRIMARY KEY UNIQUE,\n" +
-      "\ttweet text NOT NULL,\n" +
-      "\tcreated_at text NOT NULL,\n" +
-      "\tuser_name text NOT NULL,\n" +
-      "\tuser_id text NOT NULL\n" +
-      ");");
-  db.close()
-});
-
 var app = express();
 app.use(cors());
 
@@ -64,6 +46,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+process.on('SIGINT', () => {
+  db.close();
 });
 
 module.exports = app;

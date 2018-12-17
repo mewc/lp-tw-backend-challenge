@@ -1,9 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Staatliches");
+@import url("https://fonts.googleapis.com/css?family=Unlock");
 body {
   padding: 50px;
-  font: 14px "Staatliches", "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 18px "Unlock", "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #ff720b;
+  color: aliceblue; }
 
 a {
-  color: #00B7FF; }
+  color: #a5ecff; }
 
 /*# sourceMappingURL=style.css.map */
