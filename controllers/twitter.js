@@ -9,7 +9,7 @@ async function getTweetsFromApi(req, res, next) {
         searchResults = await twitter.search('#liveperson');  //hardcoding this for challenge sake
         for (let i = 0; i < searchResults.statuses.length - 1; i++) {
             const {id: tweet_id, created_at, text, user: {id: user_id, name}} = searchResults.statuses[i];
-            tweets.push({tweet_id, created_at, tweet: text, user: {user_id, user_name: name}});
+            tweets.push({tweet_id, created_at, tweet: text, user_id, user_name: name});
         }
     } catch (err) {
         res.status(503).json({error: {message: 'unable to reach twitter, try again ', code: 400}});
