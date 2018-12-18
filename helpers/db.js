@@ -9,7 +9,7 @@ const db = new sqlite3.Database('data/tweets.db', (err) => {
                 db.run("CREATE TABLE IF NOT EXISTS tweets (\n" +
                     "\ttweet_id integer PRIMARY KEY UNIQUE,\n" +
                     "\ttweet text NOT NULL,\n" +
-                    "\tcreated_at text NOT NULL,\n" +
+                     "\tcreated_at text NOT NULL,\n" +
                     "\tuser_name text NOT NULL,\n" +
                     "\tuser_id text NOT NULL\n" +
                     ");"

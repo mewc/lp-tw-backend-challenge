@@ -1,21 +1,25 @@
 process.env.NODE_ENV = 'test';
 
 let chai = require('chai');
+let expect = chai.expect;
 let chaiHttp = require('chai-http');
 
 let twitter = require('../helpers/twitter');
-
+let db = require('../helpers/db');
 var assert = require('assert');
 
-describe('tweet search', async function () {
-    // const query = '#liveperson';
-    // const {data: {search_metadata, statuses}} = await twitter.search(query);
-    //
-    // it('should return list of tweets', function () {
-    //     assert.equals(statuses.length > 0, 'true');
-    // });
-    // it('should have processed the query', function () {
-    //     assert.equals(search_metadata.query, '%23liveperson');
-    // });
-});
 
+const query = '#liveperson';
+
+describe('Tweets', function() {
+    describe('#search()', function() {
+        it('should return list of tweets', async function () {
+            const data = await twitter.search(query);
+            expect(data.statuses.length).to.greaterThan(0);
+        });
+        it('should have processed the query', async function () {
+            const data = await twitter.search(query);
+            expect(data.search_metadata.query).to.equal('%23liveperson');
+        });
+    });
+});
