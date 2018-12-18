@@ -1,18 +1,29 @@
 # Liveperson Coding Challenge:
 
-by (mewc)[https://github.com/mewc]
-contact: (jasmith@liveperson.com)[mailto:jasmith@liveperson.com] (jasmith-lp)[https://github.com/jasmith-lp]
+by [mewc](https://github.com/mewc)
+contact: [jasmith@liveperson.com](mailto:jasmith@liveperson.com) [jasmith-lp](https://github.com/jasmith-lp)
 
 ## Instructions for running
-**A live version is available, hosted on heroku. (lp-tw-backend-challenge)[https://lp-tw-backend-challenge.herokuapp.com/]**
+**A live version is available, hosted on heroku. [lp-tw-backend-challenge](https://lp-tw-backend-challenge.herokuapp.com/]**
 
-**For semi-automated deploy:**
+**For fully automated deploy [minus adding in the .env file]**
+[run-lp-tw-challenge-script](https://github.com/mewc/run-lp-tw-challenge-script)
+Currently works on windows.
+Please ask Michael or email [m@mewc.info](mailto:m@mewc.info) for permission or use your own api keys for vars in `.env.example`
 
-**For manual deploy (standard dev deploy)**
+**For already deployed versions:**
+[Backend live link](https://lp-tw-backend-challenge.herokuapp.com/)
+- endpoints are /twitter, /twitter/api, twitter/db
+[Frontend live link:](https://lp-tw-frontend-challenge.herokuapp.com/)
+
+
+**For manual deploy [standard dev deploy](**
 1. clone the repo
+1. paste in `.env` file and keys, other values, etc.
 1. `yarn install`
 1. `yarn start`
 
+Then also run the [front end app](https://github.com/mewc/lp-tw-frontend-challenge) for visualisation.
 
 
 ## Requirements
@@ -40,9 +51,10 @@ This includes:
 
  
 
-### Extras (if you have time):
+### Extras [if you have time]
 
-If you wish to add in functionality feel free, it's not needed for the submission of the core coding challenge. Some examples of extras we have seen in the past are:
+If you wish to add in functionality feel free, it's not needed for the submission of the core coding challenge. 
+Some examples of extras we have seen in the past are:
 
 1. Completed unit tests
 1. Angular frontend with results listed and styled
@@ -60,4 +72,9 @@ NodeJS script and SQL Lite database delivered VIA a GitHub repository.
 
 Email write-up explaining how the solution fits together and any positives / difficulties you had.
 
+
+### Author
+
+made by [Michael Carter](https://mewc.info) [mewc](https://github.com/mewc)
+ 
  
