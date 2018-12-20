@@ -3,18 +3,11 @@
 by [mewc](https://github.com/mewc)
 
 ## Instructions for running
-**A live version is available, hosted on heroku. [lp-tw-backend-challenge](https://lp-tw-backend-challenge.herokuapp.com/]**
-
-**For fully automated deploy [minus adding in the .env file]**
-[run-lp-tw-challenge-script](https://github.com/mewc/run-lp-tw-challenge-script)
-Currently works on windows.
-Please ask Michael or email [m@mewc.info](mailto:m@mewc.info) for permission or use your own api keys for vars in `.env.example`
 
 **For already deployed versions:**
 [Backend live link](https://lp-tw-backend-challenge.herokuapp.com/)
 - endpoints are /twitter, /twitter/api, twitter/db
 [Frontend live link:](https://lp-tw-frontend-challenge.herokuapp.com/)
-
 
 **For manual deploy [standard dev deploy](**
 1. clone the repo
