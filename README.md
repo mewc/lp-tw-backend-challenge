@@ -1,7 +1,6 @@
 # Liveperson Coding Challenge:
 
 by [mewc](https://github.com/mewc)
-contact: [jasmith@liveperson.com](mailto:jasmith@liveperson.com) [jasmith-lp](https://github.com/jasmith-lp)
 
 ## Instructions for running
 **A live version is available, hosted on heroku. [lp-tw-backend-challenge](https://lp-tw-backend-challenge.herokuapp.com/]**
